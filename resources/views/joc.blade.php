@@ -18,6 +18,12 @@ rel="stylesheet">
 
                <?php
 
+                    $partida = new App\Classes\Partida;
+                    $paraula = $partida->getParaula();
+                    echo $paraula."</br>";
+//                $url = asset('storage/app/paraules.txt');
+//                echo $url;
+
                     echo "El teu email és: ".session('em')."</br>";
                     echo "La teva contrasenya és: ".session('pw');
                 ?>
