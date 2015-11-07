@@ -10,32 +10,36 @@ rel="stylesheet">
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Benvingut al joc del Penjat</div>
-                <div class="description"><p>Has d'acertar la paraula oculta abans de completar-se el ninot penjat. Cada error li afegirà una part del cos!</p></div>
-                <div id="screenshot">
-                    <img src="http://placehold.it/200x200">
-                </div>
+
 
                <?php
 
                     $partida = new App\Classes\Partida;
                     $paraula = $partida->getParaula();
                     echo $paraula."</br>";
-//                $url = asset('storage/app/paraules.txt');
-//                echo $url;
+
+    //                $url = asset('storage/app/paraules.txt');
+    //                echo $url;
+
+                    $jugador = new App\Classes\Jugador;
+                    $jugador->guardarTop("10");
 
                     echo "El teu email és: ".session('em')."</br>";
                     echo "La teva contrasenya és: ".session('pw');
                 ?>
 
-                <div id="top-5">
-                    <h2>Puntuacions Màximes</h2>
-                    <p>Jugador 1: 0</p>
-                    <p>Jugador 2: 0</p>
-                    <p>Jugador 3: 0</p>
-                    <p>Jugador 4: 0</p>
-                    <p>Jugador 5: 0</p>
+
+                <div id="arrayParaula">
+
+                    {!! Form::open(array('url' => '/introduccioLletra')) !!}
+
+                    {!! Form::text('lletra') !!}
+
+                    {!!  Form::submit('Prova Lletra') !!}
+                    {!! Form::close() !!}
                 </div>
+
+
             </div>
 
         </div>

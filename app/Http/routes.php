@@ -20,3 +20,5 @@ Route::get('/', function () {
 //});
 
 Route::post('/login', 'LoginController@processarFormulari');
+
+Route::post('/introduccioLletra', 'LletraController@processarLletra');

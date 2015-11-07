@@ -16,5 +16,6 @@ class Partida {
         return $paraula;
     }
 
+
 }
 ?>

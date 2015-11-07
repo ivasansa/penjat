@@ -30,11 +30,52 @@ rel="stylesheet">
 
                 <div id="top-5">
                     <h2>Puntuacions Màximes</h2>
+                    <?php
+                    /*
+                    Per treure el top5, llegim l'axiu tops.txt
+                    Extreiem el contigut de la linea, que conté email pass punts
+                    amb explode() filtrem la linea
+                    */
+                    $path = storage_path('app/tops.txt');
+                    $file = fopen($path,"r");
+                    $puntMax = 0;
+
+//                    if ($file) {
+                        while ( ! feof( $file ) ) {
+//
+                            $partidaGuardada = fgets($file);
+
+                            parse_str($partidaGuardada);
+
+
+                            if($puntMax < $punts){
+
+                            }
+
+
+                            echo "<p>".$email.": ";  // value
+                            echo $punts."</p>"; // foo bar
+                        }
+
+//                    }
+                    fclose($file);
+//
+//                        $partidaGuardada = fgets($file);
+//                        list($email, $pass, $punt) = explode(" ", $partidaGuardada);
+//                        echo "<p>".$email.": ".$punt."</p></br>";
+//                    fclose($file);
+
+                    ?>
+
+<!--
+                    <h2>Puntuacions Màximes</h2>
                     <p>Jugador 1: 0</p>
                     <p>Jugador 2: 0</p>
                     <p>Jugador 3: 0</p>
                     <p>Jugador 4: 0</p>
                     <p>Jugador 5: 0</p>
+-->
+
                 </div>
             </div>
 
