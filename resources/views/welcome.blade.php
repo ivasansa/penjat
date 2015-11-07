@@ -19,7 +19,7 @@ rel="stylesheet">
                 <div id="login">
                     <h2>Login</h2>
                     <p>**La contrasenya ha de ser 6 caràcters alfanumèrics</p>
-                    {!! Form::open(array('url' => '/nombre/afegirNombre')) !!}
+                    {!! Form::open(array('url' => '/login')) !!}
                     {!! Form::label('email', 'Email') !!}
                     {!! Form::text('email') !!}
                     {!! Form::label('pass', 'Contrasenya') !!}

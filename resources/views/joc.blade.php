@@ -16,17 +16,11 @@ rel="stylesheet">
                     <img src="http://placehold.it/200x200">
                 </div>
 
-                <div id="login">
-                    <h2>Login</h2>
-                    <p class="redcolor">**La contrasenya ha de ser 6 caràcters alfanumèrics</p>
-                    {!! Form::open(array('url' => '/login')) !!}
-                    {!! Form::label('email', 'Email') !!}
-                    {!! Form::text('email') !!}
-                    {!! Form::label('pass', 'Contrasenya') !!}
-                    {!! Form::password('pass') !!}
-                    {!! Form::submit('Juga') !!}
-                    {!! Form::close() !!}
-                </div>
+               <?php
+
+                    echo "El teu email és: ".session('em')."</br>";
+                    echo "La teva contrasenya és: ".session('pw');
+                ?>
 
                 <div id="top-5">
                     <h2>Puntuacions Màximes</h2>

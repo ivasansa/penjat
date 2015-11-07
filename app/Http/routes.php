@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hola', function () {
-    return view('formulariNombre');
-});
+//Route::get('/hola', function () {
+//    return view('formulariNombre');
+//});
 
-Route::post('/nombre/afegirNombre', 'NombreController@processarFormulari');
+Route::post('/login', 'LoginController@processarFormulari');

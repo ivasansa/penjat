@@ -5,12 +5,8 @@ namespace App\Http\Controllers;
 
 use Request;
 
-class NombreController extends Controller
+class LoginController extends Controller
 {
-    public function mostrarFormulari()
-    {
-        return view('formulariNombre');
-    }
     public function processarFormulari()
     {
         $e = Request::input('email');
@@ -22,7 +18,14 @@ class NombreController extends Controller
             return view('welcome3');
         }
         else{
-            echo "hola";
+            session(['em' => $e]);
+            session(['pw' => $p]);
+            return view('joc');
+
+//            echo session('key');
+//            Session::put('email', 'pass');
+//            $value = Session::get('email');
+//            echo $value;
         }
     }
 }
