@@ -36,45 +36,49 @@ rel="stylesheet">
                     Extreiem el contigut de la linea, que conté email pass punts
                     amb explode() filtrem la linea
                     */
+                    //Llegim el arxiu tops.txt i el guardem en el array $top5
                     $path = storage_path('app/tops.txt');
                     $file = fopen($path,"r");
-                    $puntMax = 0;
 
-//                    if ($file) {
+                    $i = 0;
                         while ( ! feof( $file ) ) {
-//
+
                             $partidaGuardada = fgets($file);
 
-                            parse_str($partidaGuardada);
+                            parse_str($partidaGuardada, $output);
 
+                            $fitxer[$i] = $output;
 
-                            if($puntMax < $punts){
-
-                            }
-
-
-                            echo "<p>".$email.": ";  // value
-                            echo $punts."</p>"; // foo bar
+                            ++$i;
+//                            echo "<p>".$email.": ";  // value
+//                            echo $punts."</p>"; // foo bar
                         }
+                        array_pop($fitxer);//Treïem l'últim element, que estaba buit
+//                        print_r($top5);
+                        fclose($file);
 
-//                    }
-                    fclose($file);
-//
-//                        $partidaGuardada = fgets($file);
-//                        list($email, $pass, $punt) = explode(" ", $partidaGuardada);
-//                        echo "<p>".$email.": ".$punt."</p></br>";
-//                    fclose($file);
+                        //Treiem el top5
+                        $puntMax = 0;
 
+                        $top5 = array(0,0,0,0,0); //inicialitzem el array $top5 amb 5 pos.
+
+
+                    function cmp($a, $b) {return $b["punts"] - $a["punts"];}//Ordenació
+                    usort($fitxer, "cmp");
+
+                    //Mostrem les 5 puntuacions més altes
+                    $array = $fitxer;
+                    $i = 0;                         //Només volem treure els 5 primers
+                    foreach ($array as &$valor) {
+                        if($i >= 5){
+                            break;
+                        }
+                        echo "<p>".$valor["email"].": ";
+                        echo $valor["punts"]."</p>";
+                        ++$i;
+                    }
                     ?>
 
-<!--
-                    <h2>Puntuacions Màximes</h2>
-                    <p>Jugador 1: 0</p>
-                    <p>Jugador 2: 0</p>
-                    <p>Jugador 3: 0</p>
-                    <p>Jugador 4: 0</p>
-                    <p>Jugador 5: 0</p>
--->
 
                 </div>
             </div>
