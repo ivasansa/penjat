@@ -31,6 +31,8 @@ rel="stylesheet">
                 <div id="top-5">
                     <h2>Puntuacions Màximes</h2>
                     <?php
+
+
                     /*
                     Per treure el top5, llegim l'axiu tops.txt
                     Extreiem el contigut de la linea, que conté email pass punts
@@ -41,31 +43,17 @@ rel="stylesheet">
                     $file = fopen($path,"r");
 
                     $i = 0;
-                        while ( ! feof( $file ) ) {
-
-                            $partidaGuardada = fgets($file);
-
-                            parse_str($partidaGuardada, $output);
-
-                            $fitxer[$i] = $output;
-
-                            ++$i;
-//                            echo "<p>".$email.": ";  // value
-//                            echo $punts."</p>"; // foo bar
-                        }
-                        array_pop($fitxer);//Treïem l'últim element, que estaba buit
-//                        print_r($top5);
-                        fclose($file);
-
-                        //Treiem el top5
-                        $puntMax = 0;
-
-                        $top5 = array(0,0,0,0,0); //inicialitzem el array $top5 amb 5 pos.
-
-
+                    while ( ! feof( $file ) ) {
+                        $partidaGuardada = fgets($file);
+                        parse_str($partidaGuardada, $output);
+                        $fitxer[$i] = $output;
+                        ++$i;
+                    }
+                    array_pop($fitxer);//Treïem l'últim element, que estaba buit
+                    fclose($file);
+                    //Treiem el top5
                     function cmp($a, $b) {return $b["punts"] - $a["punts"];}//Ordenació
                     usort($fitxer, "cmp");
-
                     //Mostrem les 5 puntuacions més altes
                     $array = $fitxer;
                     $i = 0;                         //Només volem treure els 5 primers

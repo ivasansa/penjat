@@ -20,6 +20,8 @@ class LoginController extends Controller
         else{
             session(['em' => $e]);
             session(['pw' => $p]);
+            session(['lletra' => NULL]);
+            session(['er' => 0]);
             return view('joc');
 
 //            echo session('key');

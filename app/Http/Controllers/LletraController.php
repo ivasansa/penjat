@@ -11,8 +11,10 @@ class LletraController extends Controller
     {
         $l = Request::input('lletra');
         if(ctype_alpha($l)){
-            session(['paraula' => $e]);
+            session(['lletra' => $l]);
             return view('joc');
+//            echo $l;
+
         }
         else{
             return view('error');
