@@ -10,6 +10,9 @@ class LletraController extends Controller
     public function processarLletra()
     {
         $l = Request::input('lletra');
+        if(session('er')==6){
+            return view('welcome');
+        }
         if(ctype_alpha($l)){
             session(['lletra' => $l]);
             return view('joc');
@@ -20,5 +23,9 @@ class LletraController extends Controller
             return view('error');
 
         }
+    }
+    public function redireccionar()
+    {
+        return view('welcome');
     }
 }

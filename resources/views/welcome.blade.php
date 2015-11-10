@@ -36,9 +36,9 @@ rel="stylesheet">
                     /*
                     Per treure el top5, llegim l'axiu tops.txt
                     Extreiem el contigut de la linea, que conté email pass punts
-                    amb explode() filtrem la linea
+                    amb parse_str() filtrem la linea
                     */
-                    //Llegim el arxiu tops.txt i el guardem en el array $top5
+                    //Llegim el arxiu tops.txt i el guardem en la matriu $fitxer
                     $path = storage_path('app/tops.txt');
                     $file = fopen($path,"r");
 

@@ -8,6 +8,9 @@ use Request;
 
 class Partida {
 
+    /*
+    *Llegeix paraules.txt i extreu una paraula per jugar
+    */
     public function getParaula(){
         $path = storage_path('app/paraules.txt');
         $file = fopen($path,"r");
@@ -16,6 +19,10 @@ class Partida {
         return $paraula;
     }
 
+    /*Agafa la paraula escollida per jugar i crea un array $solucio ple de "_"
+    *param1 $paraula
+    *return array de "_"
+    */
     public function getSolucio($paraula){
         $charCount = strlen($paraula);
         $solucio = array();

@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use Request;
+use App\Classes;
 
 class LoginController extends Controller
 {
@@ -21,7 +22,9 @@ class LoginController extends Controller
             session(['em' => $e]);
             session(['pw' => $p]);
             session(['lletra' => NULL]);
-            session(['er' => 0]);
+            session(['er' => -1]);
+            session(['punts' => 0]);
+            session(['newgame' => true]);
             return view('joc');
 
 //            echo session('key');
