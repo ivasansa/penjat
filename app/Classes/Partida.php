@@ -14,9 +14,21 @@ class Partida {
     public function getParaula(){
         $path = storage_path('app/paraules.txt');
         $file = fopen($path,"r");
-        $paraula = fgets($file);
+//        $paraula = fgets($file);
+
+        $i = 0;
+        while ( ! feof( $file ) ) {
+            $paraula = fgets($file);
+            $fitxer[$i] = $paraula;
+            ++$i;
+        }
+        array_pop($fitxer);//Treïem l'últim element, que estaba buit
+
+        rand();
+
         fclose($file);
-        return $paraula;
+//        return $paraula;
+        return $fitxer[rand(0, count($fitxer)-1)];
     }
 
     /*Agafa la paraula escollida per jugar i crea un array $solucio ple de "_"
@@ -33,7 +45,9 @@ class Partida {
         return implode($solucio);
         }
 
-
+    /*
+    *Pinta un hangman segons l'estat d'errors que hi hagi actualment a la partida
+    */
     public function getEstat($estat){
      $dir = 'images/';
     //Array of hangmen

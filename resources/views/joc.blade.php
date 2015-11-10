@@ -10,111 +10,72 @@ rel="stylesheet">
     <body>
         <div class="container">
             <div class="content">
-
-
                <?php
-
                 $partida = new App\Classes\Partida;
-                //extreu la paraula a endevinar
-                $paraula = $partida->getParaula();
                 $jugador = new App\Classes\Jugador;
 
                 if(session('newgame')){
+                    //extreu la paraula a endevinar
+                    $paraula = $partida->getParaula();
                     //crea el vector de "_"
                     $solucio = $partida->getSolucio($paraula);//String de "_"
     //                $img = storage_path('app/paraules.txt');
                     session(['newgame' => false]);
                     session(['solucio' => $solucio]);
+                    session(['paraula' => $paraula]);
                 }
 
-
+                $paraula = session('paraula');
                 $solucio = session('solucio');
 
-//                echo $paraula."</br>";
-//                echo $solucio."</br>";
-//                session(['pa' => $paraula]);
-
-
-
-//                echo session('lletra');
-//                echo "</br>";
-////                echo session('er');
                 $error = session('er');
 
-//              $url = asset('storage/app/paraules.txt');
-//              echo $url;
-
-
-
-                //Finalitza joc
-//                $jugador = new App\Classes\Jugador;
-//                $jugador->guardarTop("10");
-//                echo "</br>";
-//                echo "El teu email és: ".session('em')."</br>";
-//                echo "La teva contrasenya és: ".session('pw');
-//                echo "</br>";
-
+                //Busca lletra
                 $off = 0;
-            $pos = strpos($paraula, session('lletra'), $off); // $pos = 7, no 0
+                $pos = strpos($paraula, session('lletra'), $off);
                 $punts = session('punts');
+                //Si no troba el caràcter, suma 1 error
                 if($pos === false){
                     session(++$error);
                     session(['er' => $error]);
-
                 }
                 else{
                 // Si el caràcter existeix
                     while($pos !== false) {
-                        $solArray = str_split($solucio);
-
-
                         $solucio[$pos] = session('lletra');
-
                         $off=$pos+1;
                         $pos = strpos($paraula, session('lletra'), $off);
                         ++$punts;
-                      session(['solucio' => $solucio]);
+                        session(['solucio' => $solucio]);
                     }
                 }
-                echo $solucio."</br>";
-//                echo $pos;
+                echo "<p id=solucio>".$solucio."</p>"."</br>";
                 if($error == 6){
-                    echo "Has perdut, prem el botó torna per anar a la pàgina inicial.";
+                    echo "Has perdut, prem el botó torna per anar a la pàgina inicial.</br>";
                 }
 
-
-                 session(['punts' => $punts]);
-
+                //actualitza els punts a la sessio
+                session(['punts' => $punts]);
 
                 //acaba el joc
                 if($punts+1 == strlen($paraula)){
-                    echo "Has guanyat!, prem l botó de torna per anar a la pàgina inicial";
+                    echo "Has guanyat!, prem el botó de torna per anar a la pàgina inicial.</br>";
                     $jugador->guardarTop($punts);
                 }
-
-
-
 
 //                pinta penjat
                 $partida->getEstat($error);
                 ?>
 
-
                 <div id="arrayParaula">
-
                     {!! Form::open(array('url' => '/introduccioLletra')) !!}
-
                     {!! Form::text('lletra') !!}
-
                     {!!  Form::submit('Prova Lletra') !!}
                     {!! Form::close() !!}
                 </div>
 
                 <div id="red">
                 {!! Form::open(array('url' => '/redirect')) !!}
-
-
-
                     {!!  Form::submit('Torna') !!}
                     {!! Form::close() !!}
                 </div>

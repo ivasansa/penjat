@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/hola', function () {
-//    return view('formulariNombre');
-//});
-
 Route::post('/login', 'LoginController@processarFormulari');
 
 Route::post('/introduccioLletra', 'LletraController@processarLletra');

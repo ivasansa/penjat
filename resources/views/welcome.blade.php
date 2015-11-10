@@ -13,7 +13,11 @@ rel="stylesheet">
                 <div class="title">Benvingut al joc del Penjat</div>
                 <div class="description"><p>Has d'acertar la paraula oculta abans de completar-se el ninot penjat. Cada error li afegirà una part del cos!</p></div>
                 <div id="screenshot">
-                    <img src="http://placehold.it/200x200">
+                    <h2>Captura</h2>
+                    <?php
+                    $dir = 'images/';
+                    echo '<img src="' . $dir . '/' . "captura.png" . '" alt="' . "captura.png" . '" />'
+                    ?>
                 </div>
 
                 <div id="login">
@@ -31,8 +35,6 @@ rel="stylesheet">
                 <div id="top-5">
                     <h2>Puntuacions Màximes</h2>
                     <?php
-
-
                     /*
                     Per treure el top5, llegim l'axiu tops.txt
                     Extreiem el contigut de la linea, que conté email pass punts

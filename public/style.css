@@ -52,9 +52,16 @@ p {
 
 }
 
-
-/*
-#top-5 p:last-of-type {
-    display: none;
+#screenshot img {
+    border: 1px solid black;
+    width: 26%;
 }
-*/
+
+#solucio {
+    font-size: 28px;
+    letter-spacing: 5px;
+}
+
+#red {
+    margin-top: 15px;
+}

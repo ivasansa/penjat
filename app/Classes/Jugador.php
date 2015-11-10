@@ -7,14 +7,15 @@ use Request;
 
 
 class Jugador {
+    /*
+    *Al finalitzar el joc, guarda al fitxer tops.txt, l'email, la pass i la puntuacio
+    *param1 $punts, punts a guardar.
+    */
     public function guardarTop($punts){
         $path = storage_path('app/tops.txt');
         $file = fopen($path,"a");
-//        fputs($file, session('em')." ".session('pw')." ".$punts."\n\r");
         fputs($file, "email=".session('em')."&pass=".session('pw')."&punts=".$punts."\n");
-//        $paraula = fgets($file);
         fclose($file);
-//        return $paraula;
     }
 }
 ?>

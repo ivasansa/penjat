@@ -13,7 +13,11 @@ rel="stylesheet">
                 <div class="title">Benvingut al joc del Penjat</div>
                 <div class="description"><p>Has d'acertar la paraula oculta abans de completar-se el ninot penjat. Cada error li afegirà una part del cos!</p></div>
                 <div id="screenshot">
-                    <img src="http://placehold.it/200x200">
+                    <h2>Captura</h2>
+                    <?php
+                    $dir = 'images/';
+                    echo '<img src="' . $dir . '/' . "captura.png" . '" alt="' . "captura.png" . '" />'
+                    ?>
                 </div>
 
                 <div id="login">
@@ -34,9 +38,9 @@ rel="stylesheet">
                     /*
                     Per treure el top5, llegim l'axiu tops.txt
                     Extreiem el contigut de la linea, que conté email pass punts
-                    amb explode() filtrem la linea
+                    amb parse_str() filtrem la linea
                     */
-                    //Llegim el arxiu tops.txt i el guardem en el array $top5
+                    //Llegim el arxiu tops.txt i el guardem en la matriu $fitxer
                     $path = storage_path('app/tops.txt');
                     $file = fopen($path,"r");
 

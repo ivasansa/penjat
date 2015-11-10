@@ -14,14 +14,12 @@ class LletraController extends Controller
             return view('welcome');
         }
         if(ctype_alpha($l)){
+            $l = strtolower($l);
             session(['lletra' => $l]);
             return view('joc');
-//            echo $l;
-
         }
         else{
             return view('error');
-
         }
     }
     public function redireccionar()
