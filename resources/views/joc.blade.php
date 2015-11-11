@@ -65,6 +65,9 @@ rel="stylesheet">
 
 //                pinta penjat
                 $partida->getEstat($error);
+
+                //Debugger utilitzant el mètode màgic toString
+                //echo($jugador);
                 ?>
 
                 <div id="arrayParaula">

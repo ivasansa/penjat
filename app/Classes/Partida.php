@@ -56,5 +56,7 @@ class Partida {
         echo $hs[$estat];
 }
 
+
+
 }
 ?>

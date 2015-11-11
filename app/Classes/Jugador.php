@@ -17,5 +17,10 @@ class Jugador {
         fputs($file, "email=".session('em')."&pass=".session('pw')."&punts=".$punts."\n");
         fclose($file);
     }
+
+    public function __toString() {
+        return "</br>Debugg: Paraula: ".session('paraula')." Solucio ".session('solucio')."</br></br>";
+    }
+
 }
 ?>
